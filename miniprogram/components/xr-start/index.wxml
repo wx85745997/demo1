@@ -1,0 +1,21 @@
+<!--components/index.wxml-->
+<xr-scene id="scene" ar-system="modes:Plane" bind:ar-ready="handleARReady">
+  <xr-assets>
+    <xr-asset-load caster-shadow type="gltf" asset-id="mode1" src="http://image.ramen42.com/fall_guys/models/%E6%9C%BA%E6%A2%B0%E7%88%86%E7%82%B8%E5%8A%A8%E7%94%BB%281%29.glb" />
+  </xr-assets>
+
+  <xr-env env-data="xr-frame-team-workspace-day" />
+  <xr-light type="ambient" color="1 1 1" intensity="1" caster-shadow />
+  <xr-light type="directional" rotation="40 70 0" color="1 1 1" intensity="3" cast-shadow />
+
+  <xr-ar-tracker id="tracker" mode="Plane" planeMode="1"    
+    bind:ar-tracker-state="onTrackerStateChange">
+    <xr-gltf scale="0.5 0.5 0.5" id="mode1" model="mode1" bind:gltf-loaded="onModel1Loaded" cast-shadow></xr-gltf>
+
+  </xr-ar-tracker>
+
+  <xr-camera clear-color="0.4 0.8 0.6 1" background="ar" is-ar-camera />
+</xr-scene>
+
+
+

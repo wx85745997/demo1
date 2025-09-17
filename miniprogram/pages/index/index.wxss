@@ -1,0 +1,81 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #aaa;
+  width: 80%;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.avatar-wrapper {
+  padding: 0;
+  width: 56px !important;
+  border-radius: 8px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.avatar {
+  display: block;
+  width: 56px;
+  height: 56px;
+}
+
+.nickname-wrapper {
+  display: flex;
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  border-top: .5px solid rgba(0, 0, 0, 0.1);
+  border-bottom: .5px solid rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+.nickname-label {
+  width: 105px;
+}
+
+.nickname-input {
+  flex: 1;
+}
+
+
+/* 浮层按钮 */
+.boom-btn {
+  position: fixed;
+  left: 50%;
+  bottom: 20vh;              /* 距离底部约 20% 屏高 */
+  transform: translateX(-50%);
+  z-index: 9999;
+
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: rgba(255, 80, 80, 0.92);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(255, 80, 80, 0.35);
+  user-select: none;
+}
