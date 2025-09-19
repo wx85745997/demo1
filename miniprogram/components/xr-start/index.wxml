@@ -1,0 +1,52 @@
+<!--components/index.wxml-->
+<xr-scene id="scene" ar-system="modes:Plane" bind:ar-ready="handleARReady" planeMode="1">
+  <!-- 资源 -->
+  <xr-assets bind:progress="handleAssetsProgress" bind:loaded="handleAssetsLoaded">
+    <xr-asset-load type="gltf" asset-id="mdl" src="http://image.ramen42.com/fall_guys/models/%E6%9C%BA%E6%A2%B0%E7%88%86%E7%82%B8%E5%8A%A8%E7%94%BB%281%29.glb" />
+    <xr-asset-load type="gltf" asset-id="anchor" src="https://mmbizwxaminiprogram-1258344707.cos.ap-guangzhou.myqcloud.com/xr-frame/demo/ar-plane-marker.glb" />
+
+    <xr-asset-material asset-id="standard-mat" effect="standard" />
+
+
+    <xr-asset-material asset-id="simple-mat" effect="simple" states="cullFace:none" />
+    <xr-asset-material asset-id="text-mat" effect="simple" />
+
+
+  </xr-assets>
+
+
+  <!-- 追踪器 -->
+  <xr-ar-tracker id="tracker" mode="Plane" planeMode="1">
+    <xr-gltf id="anchor" model="anchor"></xr-gltf>
+
+
+  </xr-ar-tracker>
+  <!-- 放置点 -->
+  <xr-node node-id="setitem" visible="false">
+    <xr-node id="preview-model">
+      <xr-node id="preview-model-sub">
+
+        <xr-gltf id="product" bind:gltf-loaded="onModelLoaded" model="mdl" scale="0.4 0.4 0.4"></xr-gltf>
+
+        <xr-node node-id="setitem1" id="setitem1" visible="true">
+          <xr-node scale="0.1 0.1 0.1" node-id="text-wrap" position="0 0.5 0">
+            <xr-mesh node-id="mesh-plane" position="0 0 -0.1" rotation="90 0 0" scale="5 5 5" geometry="plane" uniforms="u_baseColorFactor:0.6 0.8 0.6 1"></xr-mesh>
+            <xr-text id="introText" material="text-mat" value="部件1" position="0 0 0" never-cull size="1" anchor="0 1" uniforms="u_baseColorFactor:1.0 1.0 1.0 1"></xr-text>
+          </xr-node>
+        </xr-node>
+      </xr-node>
+
+
+    </xr-node>
+
+  </xr-node>
+  <!-- 相机 -->
+  <xr-camera id="camera" clear-color="0.4 0.8 0.6 1" background="ar" is-ar-camera />
+
+
+
+  <!-- 环境与灯光 -->
+  <xr-env env-data="xr-frame-team-workspace-day" />
+  <xr-light type="ambient" color="1 1 1" intensity="1" caster-shadow />
+  <xr-light type="directional" rotation="40 70 0" color="1 1 1" intensity="3" cast-shadow />
+</xr-scene>
